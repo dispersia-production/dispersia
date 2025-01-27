@@ -2,7 +2,7 @@ name: Sync from Github Org Dispersia
 
 on:
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '*/2 * * * *'
 
 jobs:
   sync:
@@ -17,19 +17,12 @@ jobs:
         run: |
           git remote add org-origin https://${{ secrets.ORG_REPO_PAT }}@github.com/dispersia-id/dispersia.git
 
-      - name: Fetch from org repo
-        env:
-          PAT: ${{ secrets.DISPERSIA_PAT }}
-        run: |
-          git config --global user.name 'masnurrm'
-          git config --global user.semail 'sangmastahnm@gmail.com'
-          git fetch org-origin
-          git pull org-origin master --rebase
-          
-      - name: Push to repo
+      - name: Fetch and pull from org repo
         env:
           PAT: ${{ secrets.DISPERSIA_PAT }}
         run: |
           git config --global user.name 'dispersia-production'
           git config --global user.semail 'hi.dispersia@gmail.com'
+          git fetch org-origin
+          git pull org-origin master --rebase
           git push origin master
