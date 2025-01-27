@@ -20,8 +20,8 @@ jobs:
         env:
           PAT: ${{ secrets.DISPERSIA_PAT }}
         run: |
-          git config --global user.name 'masnurrm'
-          git config --global user.semail 'sangmastahnm@gmail.com'
+          git config --global user.name 'dispersia-production'
+          git config --global user.semail 'hi.dispersia@gmail.com'
           git fetch org-origin
           git pull org-origin master --rebase
           git push origin master
