@@ -16,7 +16,6 @@ jobs:
       - name: Add org remote
         run: |
           git remote add org-origin https://${{ secrets.DISPERSIA_PAT }}@github.com/dispersia-id/dispersia.git
-          git remote add origin https://${{ secrets.LOCAL_PAT }}@github.com/dispersia-production/dispersia.git
 
       - name: Fetch from org repo
         env:
