@@ -2,7 +2,7 @@ name: Sync from Github Org Dispersia
 
 on:
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '*/1 * * * *'
 
 jobs:
   sync:
