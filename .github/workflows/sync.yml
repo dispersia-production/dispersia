@@ -23,5 +23,5 @@ jobs:
           git config --global user.name 'masnurrm'
           git config --global user.semail 'sangmastahnm@gmail.com'
           git fetch org-origin
-          git pull org-origin main --rebase
-          git push origin main
+          git pull org-origin master --rebase
+          git push origin master
