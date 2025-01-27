@@ -1,0 +1,27 @@
+name: Sync from Github Org
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Add org remote
+        run: |
+          git remote add org-origin https://github.com/dispersia-id/dispersia.git
+
+      - name: Fetch and pull from org repo
+        env:
+          PAT: ${{ secrets.DISPERSIA_PAT }}
+        run: |
+          git config --global user.name 'masnurrm'
+          git config --global user.semail 'sangmastahnm@gmail.com'
+          git fetch org-origin
+          git pull org-origin main --rebase
+          git push origin main
