@@ -28,9 +28,8 @@ jobs:
           git pull org-origin master --rebase
           
       - name: Push to repo
-        env:
-          PAT: ${{ secrets.DISPERSIA_PAT }}
         run: |
+          git credential-cache exit
           git config --global user.name 'dispersia-production'
           git config --global user.semail 'hi.dispersia@gmail.com'
           git push origin master
