@@ -12,6 +12,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
+          token: ${{ secrets.DISPERSIA_PAT }}
 
       - name: Add org remote
         run: |
@@ -21,9 +22,14 @@ jobs:
         env:
           PAT: ${{ secrets.DISPERSIA_PAT }}
         run: |
+          git config --local user.name 'masnurrm'
+          git config --local user.email 'sangmastahnm@gmail.com'
           git fetch org-origin
           git pull org-origin master --rebase
           
       - name: Push to repo
         run: |
+          git credential-cache exit
+          git config --local user.name 'dispersia-production'
+          git config --local user.email 'hi.dispersia@gmail.com'
           git push origin master
